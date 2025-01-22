@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: tic-tac-toe-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: ae9e1d53d90e64f9c84cd0d9e97e504b-807196214.ap-south-1.elb.amazonaws.com    
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: tic-tac-toe-service
+            port:
+              number: 80
